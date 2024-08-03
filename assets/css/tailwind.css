@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply font-merriweather;
+}
+
+h1 {
+  @apply text-xl lg:text-2xl font-bold text-charcoal;
+}
+
+h2 {
+  @apply text-lg lg:text-xl font-semibold  text-darkBlue;
+}
+
+h3 {
+  @apply text-lg font-medium text-charcoal;
+}
+
+input {
+  @apply border border-lavender rounded-md py-1.5 pl-3 outline-none w-full shadow-sm;
+}
+
+button {
+  @apply bg-darkBlue text-lightBlue py-2 px-4 rounded-md text-sm lg:text-base hover:font-semibold hover:bg-lightBlue hover:text-darkBlue  ease-in-out duration-300;
+}
+
+.button {
+  @apply bg-charcoal text-lavender py-2 px-4 rounded-md text-sm lg:text-base hover:font-semibold hover:bg-lavender hover:text-charcoal ease-in-out duration-300;
+}
+
+select {
+  @apply border border-lavender rounded-md p-2 shadow-sm;
+}
+
+table tbody tr td {
+  @apply py-2 px-1 lg:py-3;
+}
+
+.admin-add-input {
+  @apply w-[30ch];
+}
+
+label {
+  @apply text-xs lg:text-sm;
+}
+
+.tooltip {
+  @apply absolute w-fit text-nowrap text-center text-[10px] lg:text-xs mt-1 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white border border-slate-200 rounded-md p-1 z-10;
+}
+
+.borders {
+  @apply border border-lavender rounded-md;
+}
+
+.highlight {
+  @apply border border-lightBlue rounded-md shadow-sm ml-1 py-0.5 px-2 font-semibold lg:text-[17px];
+}
+
+.big-highlight {
+  @apply border border-lavender rounded-md shadow-sm ml-1 py-1 px-2 font-bold;
+}
+
+/* Targeting all scrollable elements */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+  width: 1px;
+  border-radius: 20px; /* optional: adds rounded corners to the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* slate-300 */
+  border-radius: 20px; /* optional: adds rounded corners to the scrollbar thumb */
+}
+
+/* You can also target specific elements or classes */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 1px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f8fafc; /* slate-50 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* slate-300 */
+  border-radius: 20px;
+}
