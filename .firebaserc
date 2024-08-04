@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "mozir-34f4e",
+    "default": "groupelhouria-gestion",
     "production": "groupelhouria-gestion"
   },
   "targets": {},
