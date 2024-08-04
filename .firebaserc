@@ -1,9 +1,0 @@
-{
-  "projects": {
-    "default": "groupelhouria-gestion",
-    "production": "groupelhouria-gestion"
-  },
-  "targets": {},
-  "etags": {},
-  "dataconnectEmulatorConfig": {}
-}
