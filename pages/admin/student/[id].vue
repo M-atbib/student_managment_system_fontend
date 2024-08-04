@@ -51,11 +51,11 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useAdminStore } from "~/stores/admin";
 import { useAppStore } from "~/stores";
-import AllInformation from "~/components/Admin/Student/AllInformation.vue";
-import PaymentDetails from "~/components/Admin/Student/PaymentDetails.vue";
-import Presence from "~/components/Admin/Student/Presence.vue";
-import Documents from "~/components/Admin/Student/Documents.vue";
-import Remarques from "~/components/Admin/Student/Remarques.vue";
+import AllInformation from "~/components/admin/Student/AllInformation.vue";
+import Presence from "~/components/admin/Student/Presence.vue";
+import Documents from "~/components/admin/Student/Documents.vue";
+import Remarques from "~/components/admin/Student/Remarques.vue";
+import PaymentDetails from "~/components/admin/Student/PaymentDetails.vue";
 
 const store = useAppStore();
 const route = useRoute();
