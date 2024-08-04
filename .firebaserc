@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "mozir-34f4e",
+    "production": "groupelhouria-gestion"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
