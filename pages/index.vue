@@ -5,7 +5,7 @@
     <img src="~/assets/images/logo.png" alt="logo" class="w-24 lg:w-60" />
     <div class="text-center">
       <h1 class="mb-5">Naviguer au espace etudiant</h1>
-      <NuxtLink to="/login" class="button">Espace Etudiant</NuxtLink>
+      <NuxtLink to="/login" class="button">Espace Etudiant Test</NuxtLink>
     </div>
   </div>
 </template>
