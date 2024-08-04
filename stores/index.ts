@@ -8,7 +8,7 @@ export const useAppStore = defineStore("app", {
   state: () => ({
     roles: [] as string[],
     permissions: [] as string[],
-    etab: [] as string[],
+    etab: "" as String,
     isLoading: false,
     isError: false,
     isSuccess: false,
