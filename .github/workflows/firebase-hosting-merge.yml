@@ -12,9 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
+      - run: npm run generate
+      - run: mv .nuxt functions/nuxt
+      # - run: if exist static move static functions/nuxt/static
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GROUPELHOURIA_GESTION }}
-          channelId: live
-          projectId: groupelhouria-gestion
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: your-firebase-project-id
