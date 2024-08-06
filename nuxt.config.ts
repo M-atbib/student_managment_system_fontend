@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_BACKEND_ENDPOINT || "http://127.0.0.1:8000",
     },
   },
+  buildDir: "dist",
   app: {
     head: {
       title: "Gestion Etudiant",
