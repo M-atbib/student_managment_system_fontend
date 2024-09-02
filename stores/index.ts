@@ -105,9 +105,12 @@ export const useAppStore = defineStore("app", {
       }
     },
     async login(isAdmin: boolean, email: string, password: string) {
-      await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie", {
-        withCredentials: true,
-      });
+      await axios.get(
+        "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com/sanctum/csrf-cookie",
+        {
+          withCredentials: true,
+        }
+      );
 
       const loginEndpoint = isAdmin
         ? "api/auth/login"
