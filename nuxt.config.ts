@@ -2,10 +2,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       backendUrl:
-        process.env.NUXT_PUBLIC_BACKEND_ENDPOINT || "http://127.0.0.1:8000",
+        process.env.NUXT_PUBLIC_BACKEND_ENDPOINT ||
+        "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com",
     },
   },
-  buildDir: "dist",
+  nitro: {
+    firebase: {
+      gen: 2,
+    },
+  },
   app: {
     head: {
       title: "Gestion Etudiant",
