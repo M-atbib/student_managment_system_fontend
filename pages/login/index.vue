@@ -4,7 +4,7 @@
   >
     <h1 class="text-center">
       Connexion en tant <br />
-      qu'étudiant Test Deployement again
+      qu'étudiant again
     </h1>
     <form
       @submit.prevent="submitForm"

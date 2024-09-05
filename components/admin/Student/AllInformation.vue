@@ -15,32 +15,30 @@
         <div class="flex flex-col gap-5 w-full lg:w-[50%] my-6">
           <h2>Info Personel</h2>
 
-          <div
-            class="w-full"
-            v-for="(input, index) in personalInfo"
-            :key="index"
-          >
-            <label class="text-sm">{{ input.label }}</label>
-            <input
-              v-if="input.type !== 'file'"
-              v-model="input.value"
-              :type="input.type"
-              :name="input.name"
-              :placeholder="input.placeholder"
-              maxlength="255"
-              :disabled="
-                input.name === 'password' || input.name === 'inscription_number'
-              "
-            />
-            <input
-              v-else
-              :type="input.type"
-              :name="input.name"
-              :placeholder="input.placeholder"
-              :maxlength="255"
-              @change="handleFileUpload"
-              accept=".jpg,.jpeg,.png"
-            />
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div v-for="(input, index) in personalInfo" :key="index" class="col-span-1 lg:col-span-1">
+              <label class="text-sm">{{ input.label }}</label>
+              <input
+                v-if="input.type !== 'file'"
+                v-model="input.value"
+                :type="input.type"
+                :name="input.name"
+                :placeholder="input.placeholder"
+                maxlength="255"
+                :disabled="
+                  input.name === 'password' || input.name === 'inscription_number'
+                "
+              />
+              <input
+                v-else
+                :type="input.type"
+                :name="input.name"
+                :placeholder="input.placeholder"
+                :maxlength="255"
+                @change="handleFileUpload"
+                accept=".jpg,.jpeg,.png"
+              />
+            </div>
           </div>
         </div>
 
@@ -48,58 +46,56 @@
         <div class="flex flex-col gap-5 w-full lg:w-[50%] my-6">
           <h2>Info Professionnel</h2>
 
-          <div
-            class="w-full"
-            v-for="(input, index) in professionalInfo"
-            :key="index"
-          >
-            <label class="text-sm">{{ input.label }}</label>
-            <input
-              v-if="
-                input.name !== 'group_uuid' &&
-                input.name !== 'sector' &&
-                input.name !== 'training_level'
-              "
-              :type="input.type"
-              :name="input.name"
-              :placeholder="input.placeholder"
-              v-model="input.value"
-              maxlength="255"
-            />
-            <input
-              v-else-if="input.name === 'sector'"
-              :type="input.type"
-              :name="input.name"
-              :placeholder="input.placeholder"
-              v-model="input.value"
-              disabled
-              maxlength="255"
-            />
-            <select
-              v-else-if="input.name === 'training_level'"
-              v-model="input.value"
-              class="w-full"
-            >
-              <option value="spécialisation">Spécialisation</option>
-              <option value="qualification">Qualification</option>
-              <option value="technicien">Technicien</option>
-            </select>
-            <select v-else v-model="input.value" class="w-full">
-              <option
-                v-for="(group, index) in adminStore.groups"
-                :key="index"
-                :value="group.uuid"
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div v-for="(input, index) in professionalInfo" :key="index" class="col-span-1 lg:col-span-1">
+              <label class="text-sm">{{ input.label }}</label>
+              <input
+                v-if="
+                  input.name !== 'group_uuid' &&
+                  input.name !== 'sector' &&
+                  input.name !== 'training_level'
+                "
+                :type="input.type"
+                :name="input.name"
+                :placeholder="input.placeholder"
+                v-model="input.value"
+                maxlength="255"
+              />
+              <input
+                v-else-if="input.name === 'sector'"
+                :type="input.type"
+                :name="input.name"
+                :placeholder="input.placeholder"
+                v-model="input.value"
+                disabled
+                maxlength="255"
+              />
+              <select
+                v-else-if="input.name === 'training_level'"
+                v-model="input.value"
+                class="w-full"
               >
-                {{ group.name }}
-              </option>
-            </select>
+                <option value="spécialisation">Spécialisation</option>
+                <option value="qualification">Qualification</option>
+                <option value="technicien">Technicien</option>
+              </select>
+              <select v-else v-model="input.value" class="w-full">
+                <option
+                  v-for="(group, index) in adminStore.groups"
+                  :key="index"
+                  :value="group.uuid"
+                >
+                  {{ group.name }}
+                </option>
+              </select>
 
-            <p
-              v-if="input.name === 'photo' && fileSizeError"
-              class="text-red-500"
-            >
-              {{ fileSizeError }}
-            </p>
+              <p
+                v-if="input.name === 'photo' && fileSizeError"
+                class="text-red-500"
+              >
+                {{ fileSizeError }}
+              </p>
+            </div>
           </div>
         </div>
       </div>

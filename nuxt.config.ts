@@ -6,7 +6,11 @@ export default defineNuxtConfig({
         "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com",
     },
   },
-  buildDir: "dist",
+  nitro: {
+    firebase: {
+      gen: 2,
+    },
+  },
   app: {
     head: {
       title: "Gestion Etudiant",

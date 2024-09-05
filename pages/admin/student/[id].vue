@@ -85,11 +85,18 @@ const tabs = [
 ];
 
 const sendPassword = async () => {
-  await adminStore.sendEmail(
-    adminStore.studentDetails.full_name,
-    adminStore.studentDetails.email,
-    adminStore.studentDetails.password
-  );
+  try {
+    await adminStore.sendEmail(
+      adminStore.studentDetails.full_name,
+      adminStore.studentDetails.email,
+      adminStore.studentDetails.password
+    );
+    store.isSuccess = true;
+    store.successMessage = "Le mot de passe a été envoyé avec succès.";
+  } catch (error) {
+    store.isError = true;
+    store.errorMessage = "Échec de l'envoi du mot de passe.";
+  }
 };
 
 onMounted(async () => {
