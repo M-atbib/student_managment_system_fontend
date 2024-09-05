@@ -1,5 +1,5 @@
 <template>
-  <div v-if="displayAlert" class="fixed top-20 right-5">
+  <div v-if="displayAlert" class="fixed top-20 right-5 z-20">
     <div
       class="text-white p-4 rounded-lg shadow-md z-50"
       :class="

@@ -158,9 +158,6 @@ const submitForm = async () => {
   if (typeError.value || montantError.value || dateError.value) {
     return;
   }
-
-  props.toggleDialog();
-
   await adminStore.createPayment(
     props.studentUuid,
     type.value,
@@ -169,7 +166,7 @@ const submitForm = async () => {
     date.value,
     month.value
   );
-
   await adminStore.getStudentDetails(props.studentUuid);
+  props.toggleDialog();
 };
 </script>

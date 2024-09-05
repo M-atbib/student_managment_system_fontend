@@ -104,6 +104,7 @@ export const useAppStore = defineStore("app", {
         this.isLoading = false;
       }
     },
+
     async login(isAdmin: boolean, email: string, password: string) {
       await axios.get(
         "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com/sanctum/csrf-cookie",
@@ -140,12 +141,17 @@ export const useAppStore = defineStore("app", {
     },
 
     async logout() {
+      const isStudent = this.roles.includes("student");
       await this.fetchData("api/auth/logout", "POST");
       VueCookies.remove("token");
       this.setRoles([]);
       this.setPermissions([]);
       localStorage.clear();
-      return navigateTo("/");
+      if (isStudent) {
+        return navigateTo("/login");
+      } else {
+        return navigateTo("/login/admin");
+      }
     },
 
     async fetchRolesAndPermissions() {
@@ -161,7 +167,7 @@ export const useAppStore = defineStore("app", {
     setRoles(roles: string[]) {
       this.roles = roles;
       if (typeof window !== "undefined") {
-        localStorage.setItem("user_role", roles);
+        localStorage.setItem("user_role", JSON.stringify(roles));
       }
     },
 

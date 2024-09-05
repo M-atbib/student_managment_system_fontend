@@ -163,6 +163,11 @@ const transformData = (studentData) => {
 
   const orderedTypes = ["mensualite", "inscription", "produit", "diplome"];
 
+  const monthOrder = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+  ];
+
   for (const type of orderedTypes) {
     let details = groupedData[type]
       ? groupedData[type].map((item) => ({
@@ -182,6 +187,14 @@ const transformData = (studentData) => {
         grouped[key].push(detail);
         return grouped;
       }, {});
+
+      // Order mensualite by month from January to December in French
+      details = Object.keys(details)
+        .sort((a, b) => monthOrder.indexOf(a.toLowerCase()) - monthOrder.indexOf(b.toLowerCase()))
+        .reduce((acc, key) => {
+          acc[key] = details[key];
+          return acc;
+        }, {});
     }
 
     otherPayments.push({
