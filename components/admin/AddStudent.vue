@@ -271,9 +271,9 @@ const removeResponsable = (index) => {
 
 // Watch effect to put inscription_number, sector, annual_amount in there inputs
 watchEffect(() => {
-  if (typeof window !== "undefined") {
-    studentData.value.sector = localStorage.getItem("user_role");
-  }
+  // if (typeof window !== "undefined") {
+  //   studentData.value.sector = localStorage.getItem("user_role");
+  // }
   calculateAnnualAmount();
 });
 

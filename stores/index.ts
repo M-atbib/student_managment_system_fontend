@@ -123,7 +123,7 @@ export const useAppStore = defineStore("app", {
 
       // console.log(response)
       VueCookies.set("token", response.token, "30d", "", "", true, "Strict");
-      this.setRoles(response.roles);
+      this.setRoles(response.roles[0]);
       this.setPermissions(response.permissions);
       this.setEtablisssement(response.etab_uuid);
 
