@@ -3,7 +3,7 @@
     <form @submit.prevent="submitForm">
       <div class="w-[17%] mx-auto">
         <img
-          :src="`http://127.0.0.1:8000/storage/${props.studentDetails.photo}`"
+          :src="`${runtimeConfig.public.backendUrl}/storage/${props.studentDetails.photo}`"
           alt=""
           style="border-radius: 50%"
           class="borders text-center shadow-sm"
@@ -108,6 +108,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useAdminStore } from "~/stores/admin";
+import { useRuntimeConfig } from "#imports";
 
 const props = defineProps({
   studentDetails: Object,
@@ -119,6 +120,7 @@ const adminStore = useAdminStore();
 const submitAttempted = ref(false);
 const fileSizeError = ref("");
 const fileInput = ref(null);
+const runtimeConfig = useRuntimeConfig();
 
 onMounted(async () => {
   await adminStore.getGroups(localStorage.getItem("etab_uuid"));

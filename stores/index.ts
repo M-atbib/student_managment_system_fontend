@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true;
 
 export const useAppStore = defineStore("app", {
   state: () => ({
-    roles: [] as string[],
+    roles: "" as String,
     permissions: [] as string[],
     etab: "" as String,
     isLoading: false,
@@ -123,6 +123,7 @@ export const useAppStore = defineStore("app", {
 
       // console.log(response)
       VueCookies.set("token", response.token, "30d", "", "", true, "Strict");
+      console.log(response.roles);
       this.setRoles(response.roles[0]);
       this.setPermissions(response.permissions);
       this.setEtablisssement(response.etab_uuid);
@@ -164,10 +165,10 @@ export const useAppStore = defineStore("app", {
       this.setPermissions(response.permissions);
     },
 
-    setRoles(roles: string[]) {
+    setRoles(roles: string) {
       this.roles = roles;
       if (typeof window !== "undefined") {
-        localStorage.setItem("user_role", JSON.stringify(roles));
+        localStorage.setItem("user_role", roles);
       }
     },
 

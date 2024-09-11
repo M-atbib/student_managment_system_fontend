@@ -2,6 +2,7 @@
   <div
     class="flex flex-col justify-center items-center h-[80vh] w-full text-charcoal"
   >
+    <img src="~/assets/images/logo.png" alt="logo" class="w-24 lg:w-60" />
     <h1 class="text-center">
       Connexion en tant <br />
       qu'étudiant again

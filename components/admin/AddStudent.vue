@@ -53,7 +53,7 @@
                   >
                     <label>{{ input.label }}</label>
                     <input
-                      v-if="input.type !== 'file'"
+                      v-if="input.type !== 'file' && input.name !== 'school_level'"
                       v-model="studentData[input.name]"
                       :type="input.type"
                       :name="input.name"
@@ -61,7 +61,7 @@
                       :maxlength="255"
                     />
                     <input
-                      v-else
+                      v-else-if="input.type === 'file'"
                       :type="input.type"
                       :name="input.name"
                       :placeholder="input.placeholder"
@@ -69,6 +69,34 @@
                       @change="handleFileUpload($event)"
                       accept=".jpg,.jpeg,.png"
                     />
+                    <select
+                      v-else-if="input.name === 'school_level'"
+                      v-model="studentData[input.name]"
+                      class="w-full"
+                    >
+                      <option disabled value="">Entrez le niveau scolaire</option>
+                      <option value="1ére année primaire">1ére année primaire</option>
+                      <option value="2éme année primaire">2éme année primaire</option>
+                      <option value="3éme année primaire">3éme année primaire</option>
+                      <option value="4éme année primaire">4éme année primaire</option>
+                      <option value="5éme année primaire">5éme année primaire</option>
+                      <option value="6éme année primaire">6éme année primaire</option>
+                      <option value="1ére année de l'Enseignement Secondaire Collégial">1ére année de l'Enseignement Secondaire Collégial</option>
+                      <option value="2éme année de l'Enseignement Secondaire Collégial">2éme année de l'Enseignement Secondaire Collégial</option>
+                      <option value="3éme année de l'Enseignement Secondaire Collégial">3éme année de l'Enseignement Secondaire Collégial</option>
+                      <option value="Tronc Commun de l'Enseignement Secondaire Qualifiant">Tronc Commun de l'Enseignement Secondaire Qualifiant</option>
+                      <option value="1ére Année Baccalauréat">1ére Année Baccalauréat</option>
+                      <option value="2éme Année de Baccalauréat">2éme Année de Baccalauréat</option>
+                      <option value="Baccalauréat">Baccalauréat</option>
+                      <option value="Bac+2">Bac+2</option>
+                      <option value="Bac+3">Bac+3</option>
+                      <option value="Bac+4">Bac+4</option>
+                      <option value="Bac+5">Bac+5</option>
+                      <option value="Technicien">Technicien</option>
+                      <option value="Qualification">Qualification</option>
+                      <option value="Spécialisation">Spécialisation</option>
+                      <option value="Bac Professionnel">Bac Professionnel</option>
+                    </select>
                   </div>
 
                   <div class="admin-add-input">
@@ -130,7 +158,8 @@
                     <input
                       v-if="
                         input.name !== 'group_uuid' &&
-                        input.name !== 'training_level'
+                        input.name !== 'training_level' &&
+                        input.name !== 'filières_formation'
                       "
                       v-model="studentData[input.name]"
                       :type="input.type"
@@ -159,6 +188,23 @@
                       >
                         {{ group.name }}
                       </option>
+                    </select>
+                    <select
+                      v-if="input.name === 'filières_formation'"
+                      v-model="studentData[input.name]"
+                      class="w-full"
+                    >
+                      <option disabled value="">Entrez filières de formation</option>
+                      <option v-if="studentData.sector === 'coiffure'" value="coiffeur">Coiffeur</option>
+                      <option v-if="studentData.sector === 'coiffure'" value="coiffeur visagist">Coiffeur Visagist</option>
+                      <option v-if="studentData.sector === 'esthetique'" value="operatrice en soins courants de beaute">Opératrice en Soins Courants de Beauté</option>
+                      <option v-if="studentData.sector === 'esthetique'" value="esthéticienne">Esthéticienne</option>
+                      <option v-if="studentData.sector === 'esthetique'" value="esthéticienne professionelle">Esthéticienne Professionnelle</option>
+                      <option v-if="studentData.sector === 'owner'" value="coiffeur">Coiffeur</option>
+                      <option v-if="studentData.sector === 'owner'" value="coiffeur visagist">Coiffeur Visagist</option>
+                      <option v-if="studentData.sector === 'owner'" value="operatrice en soins courants de beaute">Opératrice en Soins Courants de Beauté</option>
+                      <option v-if="studentData.sector === 'owner'" value="esthéticienne">Esthéticienne</option>
+                      <option v-if="studentData.sector === 'owner'" value="esthéticienne professionelle">Esthéticienne Professionnelle</option>
                     </select>
                   </div>
                 </div>
@@ -271,9 +317,9 @@ const removeResponsable = (index) => {
 
 // Watch effect to put inscription_number, sector, annual_amount in there inputs
 watchEffect(() => {
-  // if (typeof window !== "undefined") {
-  //   studentData.value.sector = localStorage.getItem("user_role");
-  // }
+  if (typeof window !== "undefined") {
+    studentData.value.sector = localStorage.getItem("user_role");
+  }
   calculateAnnualAmount();
 });
 
@@ -338,7 +384,7 @@ const personalInfo = [
   },
   {
     label: "Niveau Scolaire",
-    type: "text",
+    type: "select",
     name: "school_level",
     placeholder: "Entrez le niveau scolaire",
   },
@@ -383,9 +429,9 @@ const professionalInfo = [
   },
   {
     label: "Filières de Formation ",
-    type: "text",
+    type: "select",
     name: "filières_formation",
-    placeholder: "Entrez filières de formation ",
+    placeholder: "Entrez filières de formation",
   },
   {
     label: "Niveau de Formation",
