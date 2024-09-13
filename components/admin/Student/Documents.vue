@@ -24,7 +24,7 @@
 
           <div class="flex items-center justify-end gap-2 mt-2">
             <a
-              :href="`http://127.0.0.1:8000/storage/${doc.name_file}`"
+              :href="`${runtimeConfig.public.fileStorage}/${doc.name_file}`"
               target="_blank"
               class="font-bold"
               ><div class="group relative" @click="toggleDialog">

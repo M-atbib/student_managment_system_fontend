@@ -3,7 +3,7 @@
     <form @submit.prevent="submitForm">
       <div class="w-[17%] mx-auto">
         <img
-          :src="`${runtimeConfig.public.backendUrl}/storage/${props.studentDetails.photo}`"
+          :src="`${runtimeConfig.public.fileStorage}/${props.studentDetails.photo}`"
           alt=""
           style="border-radius: 50%"
           class="borders text-center shadow-sm"

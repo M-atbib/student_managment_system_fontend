@@ -48,6 +48,8 @@ const formatDate = (date) => {
   return new Date(date).toISOString().split("T")[0];
 };
 
+console.log(props.studentInfo)
+
 const personalInfo = [
   { name: "Numero d'inscription", value: props.studentInfo.inscription_number },
   { name: "CIN", value: props.studentInfo.CIN },

@@ -28,7 +28,7 @@
           <p class="cursor-pointer mb-2">
             File:
             <a
-              :href="`http://127.0.0.1:8000/storage/${emploi.name_file}`"
+              :href="`${runtimeConfig.public.fileStorage}/${emploi.name_file}`"
               target="_blank"
               class="highlight hover:bg-lightBlue"
               >{{ getFileName(emploi.name_file) }}</a
