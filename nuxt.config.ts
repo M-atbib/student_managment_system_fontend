@@ -4,6 +4,9 @@ export default defineNuxtConfig({
       backendUrl:
         process.env.NUXT_PUBLIC_BACKEND_ENDPOINT ||
         "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com",
+      fileStorage:
+        process.env.NUXT_PUBLIC_FILE_STORAGE ||
+        " https://f003.backblazeb2.com/file/groupeelhourria/",
     },
   },
   nitro: {
