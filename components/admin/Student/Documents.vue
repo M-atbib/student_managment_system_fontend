@@ -46,8 +46,11 @@
 
 <script setup>
 import { useAdminStore } from "~/stores/admin";
+import { useRuntimeConfig } from "#imports";
 
 const adminStore = useAdminStore();
+const runtimeConfig = useRuntimeConfig();
+
 const props = defineProps({
   studentDetails: Object,
 });

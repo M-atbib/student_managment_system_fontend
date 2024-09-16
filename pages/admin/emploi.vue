@@ -64,8 +64,10 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useAdminStore } from "~/stores/admin";
+import { useRuntimeConfig } from "#imports";
 
 const adminStore = useAdminStore();
+const runtimeConfig = useRuntimeConfig();
 
 const refreshTimetable = async () => {
   await adminStore.getTimetable(localStorage.getItem("etab_uuid"));

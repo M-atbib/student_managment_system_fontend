@@ -6,7 +6,7 @@ export default defineNuxtConfig({
         "https://gestion-groupeelhouria-d5bfba1b9bb0.herokuapp.com",
       fileStorage:
         process.env.NUXT_PUBLIC_FILE_STORAGE ||
-        " https://f003.backblazeb2.com/file/groupeelhourria/",
+        " https://f003.backblazeb2.com/file/groupeelhourria",
     },
   },
   nitro: {
