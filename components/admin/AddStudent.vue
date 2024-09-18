@@ -39,7 +39,7 @@
 
             <!-- Form 1 -->
             <div v-if="tab === 1">
-              <form @submit.prevent="tab = 2">
+              <div>
                 <h2>Info Personel</h2>
 
                 <!-- Inputs for Form1 -->
@@ -53,7 +53,11 @@
                   >
                     <label>{{ input.label }}</label>
                     <input
-                      v-if="input.type !== 'file' && input.name !== 'school_level'"
+                      v-if="
+                        input.type !== 'file' &&
+                        input.name !== 'school_level' &&
+                        input.name !== 'gender'
+                      "
                       v-model="studentData[input.name]"
                       :type="input.type"
                       :name="input.name"
@@ -74,19 +78,53 @@
                       v-model="studentData[input.name]"
                       class="w-full"
                     >
-                      <option disabled value="">Entrez le niveau scolaire</option>
-                      <option value="1ére année primaire">1ére année primaire</option>
-                      <option value="2éme année primaire">2éme année primaire</option>
-                      <option value="3éme année primaire">3éme année primaire</option>
-                      <option value="4éme année primaire">4éme année primaire</option>
-                      <option value="5éme année primaire">5éme année primaire</option>
-                      <option value="6éme année primaire">6éme année primaire</option>
-                      <option value="1ére année de l'Enseignement Secondaire Collégial">1ére année de l'Enseignement Secondaire Collégial</option>
-                      <option value="2éme année de l'Enseignement Secondaire Collégial">2éme année de l'Enseignement Secondaire Collégial</option>
-                      <option value="3éme année de l'Enseignement Secondaire Collégial">3éme année de l'Enseignement Secondaire Collégial</option>
-                      <option value="Tronc Commun de l'Enseignement Secondaire Qualifiant">Tronc Commun de l'Enseignement Secondaire Qualifiant</option>
-                      <option value="1ére Année Baccalauréat">1ére Année Baccalauréat</option>
-                      <option value="2éme Année de Baccalauréat">2éme Année de Baccalauréat</option>
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
+                      <option value="1ére année primaire">
+                        1ére année primaire
+                      </option>
+                      <option value="2éme année primaire">
+                        2éme année primaire
+                      </option>
+                      <option value="3éme année primaire">
+                        3éme année primaire
+                      </option>
+                      <option value="4éme année primaire">
+                        4éme année primaire
+                      </option>
+                      <option value="5éme année primaire">
+                        5éme année primaire
+                      </option>
+                      <option value="6éme année primaire">
+                        6éme année primaire
+                      </option>
+                      <option
+                        value="1ére année de l'Enseignement Secondaire Collégial"
+                      >
+                        1ére année de l'Enseignement Secondaire Collégial
+                      </option>
+                      <option
+                        value="2éme année de l'Enseignement Secondaire Collégial"
+                      >
+                        2éme année de l'Enseignement Secondaire Collégial
+                      </option>
+                      <option
+                        value="3éme année de l'Enseignement Secondaire Collégial"
+                      >
+                        3éme année de l'Enseignement Secondaire Collégial
+                      </option>
+                      <option
+                        value="Tronc Commun de l'Enseignement Secondaire Qualifiant"
+                      >
+                        Tronc Commun de l'Enseignement Secondaire Qualifiant
+                      </option>
+                      <option value="1ére Année Baccalauréat">
+                        1ére Année Baccalauréat
+                      </option>
+                      <option value="2éme Année de Baccalauréat">
+                        2éme Année de Baccalauréat
+                      </option>
                       <option value="Baccalauréat">Baccalauréat</option>
                       <option value="Bac+2">Bac+2</option>
                       <option value="Bac+3">Bac+3</option>
@@ -95,7 +133,20 @@
                       <option value="Technicien">Technicien</option>
                       <option value="Qualification">Qualification</option>
                       <option value="Spécialisation">Spécialisation</option>
-                      <option value="Bac Professionnel">Bac Professionnel</option>
+                      <option value="Bac Professionnel">
+                        Bac Professionnel
+                      </option>
+                    </select>
+                    <select
+                      v-else-if="input.name === 'gender'"
+                      v-model="studentData[input.name]"
+                      class="w-full"
+                    >
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
+                      <option value="femme">Femme</option>
+                      <option value="homme">Homme</option>
                     </select>
                   </div>
 
@@ -116,7 +167,7 @@
                       type="text"
                       name="num"
                       placeholder="Entrez le num du responsable"
-                      @change="addResponsable"
+                      @keyup.enter="addResponsable"
                     />
                   </div>
                 </div>
@@ -136,8 +187,8 @@
                   </div>
                 </div>
 
-                <button type="submit" class="float-right">Suivant</button>
-              </form>
+                <button @click="tab = 2" class="float-right">Suivant</button>
+              </div>
             </div>
 
             <!-- Form 2 -->
@@ -159,7 +210,8 @@
                       v-if="
                         input.name !== 'group_uuid' &&
                         input.name !== 'training_level' &&
-                        input.name !== 'filières_formation'
+                        input.name !== 'filières_formation' &&
+                        input.name !== 'training_duration'
                       "
                       v-model="studentData[input.name]"
                       :type="input.type"
@@ -172,6 +224,9 @@
                       v-model="studentData[input.name]"
                       class="w-full"
                     >
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
                       <option value="spécialisation">Spécialisation</option>
                       <option value="qualification">Qualification</option>
                       <option value="technicien">Technicien</option>
@@ -181,6 +236,9 @@
                       v-model="studentData[input.name]"
                       class="w-full"
                     >
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
                       <option
                         v-for="group in adminStore.groups"
                         :value="group.uuid"
@@ -192,19 +250,69 @@
                     <select
                       v-if="input.name === 'filières_formation'"
                       v-model="studentData[input.name]"
+                      @change="updateTrainingLevel"
                       class="w-full"
                     >
-                      <option disabled value="">Entrez filières de formation</option>
-                      <option v-if="studentData.sector === 'coiffure'" value="coiffeur">Coiffeur</option>
-                      <option v-if="studentData.sector === 'coiffure'" value="coiffeur visagist">Coiffeur Visagist</option>
-                      <option v-if="studentData.sector === 'esthetique'" value="operatrice en soins courants de beaute">Opératrice en Soins Courants de Beauté</option>
-                      <option v-if="studentData.sector === 'esthetique'" value="esthéticienne">Esthéticienne</option>
-                      <option v-if="studentData.sector === 'esthetique'" value="esthéticienne professionelle">Esthéticienne Professionnelle</option>
-                      <option v-if="studentData.sector === 'owner'" value="coiffeur">Coiffeur</option>
-                      <option v-if="studentData.sector === 'owner'" value="coiffeur visagist">Coiffeur Visagist</option>
-                      <option v-if="studentData.sector === 'owner'" value="operatrice en soins courants de beaute">Opératrice en Soins Courants de Beauté</option>
-                      <option v-if="studentData.sector === 'owner'" value="esthéticienne">Esthéticienne</option>
-                      <option v-if="studentData.sector === 'owner'" value="esthéticienne professionelle">Esthéticienne Professionnelle</option>
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
+                      <option
+                        v-if="
+                          studentData.sector === 'coiffure' ||
+                          studentData.sector === 'owner'
+                        "
+                        value="coiffeur"
+                      >
+                        Coiffeur
+                      </option>
+                      <option
+                        v-if="
+                          studentData.sector === 'coiffure' ||
+                          studentData.sector === 'owner'
+                        "
+                        value="coiffeur visagist"
+                      >
+                        Coiffeur Visagist
+                      </option>
+                      <option
+                        v-if="
+                          studentData.sector === 'esthetique' ||
+                          studentData.sector === 'owner'
+                        "
+                        value="operatrice en soins courants de beaute"
+                      >
+                        Opératrice en Soins Courants de Beauté
+                      </option>
+                      <option
+                        v-if="
+                          studentData.sector === 'esthetique' ||
+                          studentData.sector === 'owner'
+                        "
+                        value="esthéticienne"
+                      >
+                        Esthéticienne
+                      </option>
+                      <option
+                        v-if="
+                          studentData.sector === 'esthetique' ||
+                          studentData.sector === 'owner'
+                        "
+                        value="esthéticienne professionelle"
+                      >
+                        Esthéticienne Professionnelle
+                      </option>
+                    </select>
+                    <select
+                      v-if="input.name === 'training_duration'"
+                      v-model="studentData[input.name]"
+                      class="w-full"
+                    >
+                      <option disabled value="" selected hidden>
+                        {{ input.placeholder }}
+                      </option>
+                      <option value="3">3 mois</option>
+                      <option value="6">6 mois</option>
+                      <option value="12">12 mois</option>
                     </select>
                   </div>
                 </div>
@@ -258,12 +366,7 @@ const calculateEndDate = () => {
     return;
   }
   const startDate = new Date(studentData.value.date_start_at);
-  let duration = 0;
-  if (studentData.value.training_duration === "1ans") {
-    duration = 12;
-  } else if (studentData.value.training_duration === "6month") {
-    duration = 6;
-  }
+  let duration = parseInt(studentData.value.training_duration);
   startDate.setMonth(startDate.getMonth() + duration);
   studentData.value.date_fin_at = startDate.toISOString().split("T")[0];
 };
@@ -277,12 +380,7 @@ const calculateAnnualAmount = () => {
     return;
   }
   const monthlyAmount = parseInt(studentData.value.monthly_amount);
-  let duration = 0;
-  if (studentData.value.training_duration === "1ans") {
-    duration = 12;
-  } else if (studentData.value.training_duration === "6mois") {
-    duration = 6;
-  }
+  const duration = parseInt(studentData.value.training_duration);
   studentData.value.annual_amount = (monthlyAmount * duration).toString();
 };
 
@@ -323,6 +421,22 @@ watchEffect(() => {
   calculateAnnualAmount();
 });
 
+// Function to update training level based on filières_formation
+const updateTrainingLevel = () => {
+  const filiere = studentData.value.filières_formation;
+  if (filiere === "coiffeur") {
+    studentData.value.training_level = "spécialisation";
+  } else if (filiere === "coiffeur visagist") {
+    studentData.value.training_level = "qualification";
+  } else if (filiere === "operatrice en soins courants de beaute") {
+    studentData.value.training_level = "spécialisation";
+  } else if (filiere === "esthéticienne") {
+    studentData.value.training_level = "qualification";
+  } else if (filiere === "esthéticienne professionelle") {
+    studentData.value.training_level = "technicien";
+  }
+};
+
 // Function to submit the form
 const submitForm = async () => {
   try {
@@ -345,12 +459,12 @@ const submitForm = async () => {
 };
 
 const personalInfo = [
-  // {
-  //   label: "Numero d'inscription",
-  //   type: "text",
-  //   name: "inscription_number",
-  //   placeholder: "Entrez le numéro d'inscription",
-  // },
+  {
+    label: "Numero d'inscription",
+    type: "text",
+    name: "inscription_number",
+    placeholder: "Entrez le numéro d'inscription",
+  },
   { label: "CIN", type: "text", name: "CIN", placeholder: "Entrez le CIN" },
   {
     label: "ID Massar",
@@ -378,7 +492,7 @@ const personalInfo = [
   },
   {
     label: "Genre",
-    type: "text",
+    type: "select",
     name: "gender",
     placeholder: "Entrez le Genre",
   },
@@ -417,9 +531,9 @@ const personalInfo = [
 const professionalInfo = [
   {
     label: "Duree de Formation",
-    type: "text",
+    type: "select",
     name: "training_duration",
-    placeholder: "Entrez durée du formation(1ans ou 6mois)",
+    placeholder: "Entrez durée du formation",
   },
   {
     label: "Secteur",

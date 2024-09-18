@@ -44,6 +44,6 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["nuxt-icon", "@pinia/nuxt"],
+  modules: ["@pinia/nuxt", "@nuxt/icon"],
   plugins: ["~/plugins/vue-cookies.js"],
 });

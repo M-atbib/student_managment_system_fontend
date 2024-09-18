@@ -10,13 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.1",
     "@pinia/nuxt": "^0.5.1",
     "@vueuse/core": "^11.0.3",
     "axios": "^1.7.2",
     "crypto-js": "^4.2.0",
+    "date-fns": "^4.1.0",
     "lru-cache": "^11.0.0",
     "nuxt": "^3.11.2",
-    "nuxt-icon": "^1.0.0-beta.7",
     "pinia": "^2.1.7",
     "vue": "^3.4.27",
     "vue-cookies": "^1.8.4",
