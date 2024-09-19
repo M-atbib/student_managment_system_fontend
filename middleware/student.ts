@@ -40,11 +40,11 @@ export default defineNuxtRouteMiddleware(async (to) => {
         }
       }
 
-      if (!appStore.roles.every((role) => requiredRoles.includes(role))) {
-        console.log("Redirecting to unauthorized page");
-        await appStore.logout();
-        return navigateTo("/login");
-      }
+      // if (!appStore.roles.every((role) => requiredRoles.includes(role))) {
+      //   console.log("Redirecting to unauthorized page");
+      //   await appStore.logout();
+      //   return navigateTo("/login");
+      // }
     } catch (error) {
       console.log("Error validating token, redirecting to login");
       VueCookies.remove("token");

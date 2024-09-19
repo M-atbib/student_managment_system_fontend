@@ -16,7 +16,11 @@
           <h2>Info Personel</h2>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div v-for="(input, index) in personalInfo" :key="index" class="col-span-1 lg:col-span-1">
+            <div
+              v-for="(input, index) in personalInfo"
+              :key="index"
+              class="col-span-1 lg:col-span-1"
+            >
               <label class="text-sm">{{ input.label }}</label>
               <input
                 v-if="input.type !== 'file'"
@@ -26,7 +30,8 @@
                 :placeholder="input.placeholder"
                 maxlength="255"
                 :disabled="
-                  input.name === 'password' || input.name === 'inscription_number'
+                  input.name === 'password' ||
+                  input.name === 'inscription_number'
                 "
               />
               <input
@@ -47,7 +52,11 @@
           <h2>Info Professionnel</h2>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div v-for="(input, index) in professionalInfo" :key="index" class="col-span-1 lg:col-span-1">
+            <div
+              v-for="(input, index) in professionalInfo"
+              :key="index"
+              class="col-span-1 lg:col-span-1"
+            >
               <label class="text-sm">{{ input.label }}</label>
               <input
                 v-if="
@@ -240,6 +249,13 @@ const personalInfo = [
     name: "email",
     placeholder: "Entrez l'email",
     value: props.studentDetails.email,
+  },
+  {
+    label: "Address",
+    type: "address",
+    name: "address",
+    placeholder: "Entrez address",
+    value: props.studentDetails.address,
   },
   ...(props.studentDetails.responsable
     ? props.studentDetails.responsable
